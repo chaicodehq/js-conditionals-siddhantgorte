@@ -26,4 +26,26 @@
  */
 export function calculateGrade(score, hasExtraCredit) {
   // Your code here
+  // 1. Validate original score first
+  if (typeof score !== "number" || score < 0 || score > 100) {
+    return "INVALID";
+  }
+
+  // 2. Apply extra credit (after validation)
+  if (hasExtraCredit) {
+    score = Math.min(score + 5, 100);
+  }
+
+  // 3. Determine letter grade
+  if (score >= 90) {
+    return "A";
+  } else if (score >= 80) {
+    return "B";
+  } else if (score >= 70) {
+    return "C";
+  } else if (score >= 60) {
+    return "D";
+  } else {
+    return "F";
+  }
 }
